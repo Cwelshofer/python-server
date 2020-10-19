@@ -1,6 +1,6 @@
 class Customer():
 
-    def __init__(self, id, name, address, email="", password="Nice try pal..."):
+    def __init__(self, id, name, address, email = "", password = ""):
         self.id = id
         self.name = name
         self.address = address

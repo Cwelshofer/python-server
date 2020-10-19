@@ -5,11 +5,11 @@ CREATE TABLE `Location` (
 );
 
 CREATE TABLE `Customer` (
-  `id`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  `name`    TEXT NOT NULL,
-  `address`    TEXT NOT NULL,
-  `email`    TEXT NOT NULL,
-  `password`    TEXT NOT NULL
+    `id`    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    `name`    TEXT NOT NULL,
+    `address`    TEXT NOT NULL,
+    `email`    TEXT NOT NULL,
+    `password`    TEXT NOT NULL
 );
 
 CREATE TABLE `Animal` (
@@ -30,12 +30,8 @@ CREATE TABLE `Employee` (
 	`address`	TEXT NOT NULL,
 	`location_id` INTEGER NOT NULL,
 	FOREIGN KEY(`location_id`) REFERENCES `Location`(`id`)
+
 );
-
-
-
-
-
 
 INSERT INTO `Location` VALUES (null, 'Nashville North', "64 Washington Heights");
 INSERT INTO `Location` VALUES (null, 'Nashville South', "101 Penn Ave");
@@ -54,6 +50,7 @@ INSERT INTO `Customer` VALUES (null, "Jenna Solis", "301 Redirect Ave", "jenna@s
 INSERT INTO `Customer` VALUES (null, "Emily Lemmon", "454 Mulberry Way", "emily@lemmon.com", "password");
 
 
+
 INSERT INTO `Animal` VALUES (null, "Snickers", "Recreation", "Dalmation", 4, 1);
 INSERT INTO `Animal` VALUES (null, "Jax", "Treatment", "Beagle", 1, 1);
 INSERT INTO `Animal` VALUES (null, "Falafel", "Treatment", "Siamese", 4, 2);
@@ -61,7 +58,37 @@ INSERT INTO `Animal` VALUES (null, "Doodles", "Kennel", "Poodle", 3, 1);
 INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
 
 
-
-
-
+SELECT * FROM Location;
+SELECT * FROM Customer;
+SELECT * FROM Employee;
 SELECT * FROM Animal;
+
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id,
+    l.name location_name,
+    l.address location_address
+FROM Animal a
+JOIN Location l
+    ON l.id = a.location_id;
+
+SELECT
+            a.id,
+            a.name,
+            a.breed,
+            a.status,
+            a.location_id,
+            a.customer_id,
+            l.name location_name,
+            l.address location_address,
+			c. name customer_name
+        FROM Animal a
+        JOIN Location l
+            ON l.id = a.location_id
+        JOIN Customer c
+            ON c.id = a.customer_id;

@@ -3,7 +3,7 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "database": "\\\\wsl$\\Ubuntu-18.04\\home\\cwelshofer\\workspace\\python-server\\kennel.db",
+            "database": "kennel.db",
             "name": "python kennels"
         }
     ]
